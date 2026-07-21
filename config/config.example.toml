@@ -1,0 +1,27 @@
+# Copy to config/config.toml and edit. config.toml is gitignored.
+# SECRETS DO NOT LIVE HERE. API keys go in Windows Credential Manager (via keyring).
+
+[data]
+history_start = "2010-01-01"
+duckdb_path   = "data/research.duckdb"
+
+[universe]
+min_price          = 5.0
+min_adv_usd        = 10_000_000   # 21-day average dollar volume floor
+max_spread_bps     = 10
+tier               = 1            # capital-adaptive; tier 1 = <$25k
+
+[costs]
+commission_stock_per_side = 9.95
+commission_etf_buy        = 0.0
+commission_etf_sell       = 9.95
+spread_floor_bps          = 5
+slippage_bps              = 5
+fx_drag_bps_ng            = 15    # Norbert's Gambit assumption for USD names
+
+[fx]
+boc_valet_series = "FXCADUSD"
+
+[keyring]
+service      = "trading-assistant"
+fmp_key_user = "fmp_api_key"

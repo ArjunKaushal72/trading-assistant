@@ -1,0 +1,25 @@
+# ---- SECRETS & LOCAL CONFIG (never commit) ----
+config/config.toml
+.env
+*.pem
+*.key
+
+# ---- LOCAL DATA STORES (regenerable / large / point-in-time) ----
+*.duckdb
+*.duckdb.wal
+/data/
+/snapshots/
+
+# ---- PYTHON ----
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ---- MISC ----
+*.log
+.ipynb_checkpoints/
