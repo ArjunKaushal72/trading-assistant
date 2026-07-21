@@ -20,7 +20,11 @@ slippage_bps              = 5
 fx_drag_bps_ng            = 15    # Norbert's Gambit assumption for USD names
 
 [fx]
+<<<<<<< HEAD
 boc_valet_series = "FXUSDCAD"   # CAD per 1 USD (direct USD->CAD multiplier)
+=======
+boc_valet_series = "FXCADUSD"
+>>>>>>> 11fb5b7bbfd6723356bc686640a0f355b83af44f
 
 [keyring]
 service      = "trading-assistant"
