@@ -1,0 +1,9 @@
+# Normalize to LF in the repo so ubuntu CI is happy; keep PowerShell as CRLF.
+* text=auto eol=lf
+*.py    text eol=lf
+*.toml  text eol=lf
+*.md    text eol=lf
+*.yml   text eol=lf
+*.ps1   text eol=crlf
+*.duckdb binary
+*.zip    binary
