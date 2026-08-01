@@ -96,7 +96,7 @@ def main() -> int:
     hr("INGEST LOG SUMMARY")
     summary = con.execute(
         "SELECT source, count(*) filter (where ok) ok_n, "
-        "count(*) filter (where not ok) fail_n, sum(rows) rows "
+        "count(*) filter (where not ok) fail_n, sum(rows) AS total_rows "
         "FROM ingest_log GROUP BY source"
     ).df()
     print(summary.to_string(index=False))

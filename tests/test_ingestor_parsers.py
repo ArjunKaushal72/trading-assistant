@@ -31,19 +31,21 @@ def test_stooq_symbol_mapping():
     assert stooq.stooq_symbol("RY.TO", "CA") == "ry.ca"
 
 
+# NOTE: source_diag confirmed the /full endpoint returns NO adjusted close.
+# Adjusted prices come from historical-price-eod/dividend-adjusted instead.
 FMP_JSON = json.dumps([
     {"date": "2010-01-04", "open": 7.62, "high": 7.66, "low": 7.58,
-     "close": 7.64, "adjClose": 6.50, "volume": 123456},
+     "close": 7.64, "volume": 123456, "vwap": 7.62},
     {"date": "2010-01-05", "open": 7.66, "high": 7.70, "low": 7.62,
-     "close": 7.65, "adjClose": 6.51, "volume": 111111},
+     "close": 7.65, "volume": 111111, "vwap": 7.66},
 ])
 
 
-def test_fmp_parses_list_with_adjclose():
+def test_fmp_parses_raw_list_without_adjclose():
     df = fmp.parse_stable_eod(json.loads(FMP_JSON))
     assert len(df) == 2
-    assert df["adj_close"].iloc[0] == 6.50
-    assert "close" in df.columns
+    assert df["close"].iloc[0] == 7.64
+    assert df["adj_close"].isna().all()
 
 
 def test_fmp_handles_dict_wrapper():
