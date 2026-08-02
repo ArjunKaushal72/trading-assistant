@@ -24,7 +24,7 @@ from ta_research.data.symbols import to_tiingo
 try:
     import keyring
 except Exception:  # pragma: no cover
-    keyring = None
+    keyring = None  # type: ignore[assignment]
 
 BASE = "https://api.tiingo.com/tiingo/daily"
 SERVICE = "trading-assistant"

@@ -20,7 +20,6 @@ import time
 from pathlib import Path
 
 import pandas as pd
-import requests
 
 from ta_research.data import budget, fmp
 from ta_research.storage import duckdb_store as store

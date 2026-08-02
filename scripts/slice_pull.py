@@ -11,7 +11,6 @@ Real data on disk AND the empirical answers, in one run. Report the output back.
 """
 from __future__ import annotations
 
-import json
 
 from ta_research.data import boc, fmp, stooq
 from ta_research.quality import checks

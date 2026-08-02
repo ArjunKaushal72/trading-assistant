@@ -1,7 +1,6 @@
 """Parser tests use recorded fixture strings, never the live network."""
 import json
 
-import pandas as pd
 import pytest
 
 from ta_research.data import boc, fmp, stooq

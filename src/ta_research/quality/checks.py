@@ -47,11 +47,11 @@ def check_no_duplicate_bars(df: pd.DataFrame) -> list[QualityIssue]:
 
 def check_ohlc_consistency(df: pd.DataFrame) -> list[QualityIssue]:
     _require_cols(df)
-    o, h, l, c, v = df["open"], df["high"], df["low"], df["close"], df["volume"]
+    o, h, lo, c, v = df["open"], df["high"], df["low"], df["close"], df["volume"]
     valid = (
-        (l <= h)
-        & (l <= o) & (o <= h)
-        & (l <= c) & (c <= h)
+        (lo <= h)
+        & (lo <= o) & (o <= h)
+        & (lo <= c) & (c <= h)
         & (v >= 0)
     )
     bad = df.loc[~valid]

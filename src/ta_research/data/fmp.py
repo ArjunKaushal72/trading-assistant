@@ -22,7 +22,7 @@ import requests
 try:
     import keyring
 except Exception:  # pragma: no cover
-    keyring = None
+    keyring = None  # type: ignore[assignment]
 
 BASE = "https://financialmodelingprep.com/stable"
 STABLE_EOD = f"{BASE}/historical-price-eod/full"

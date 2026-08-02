@@ -5,7 +5,6 @@ and the caller recovered the code by substring-searching the message. "402"
 never appeared there, so 173 plan-restricted symbols were logged as
 unclassified 'hard' failures and the real cause stayed hidden for a full run.
 """
-import pytest
 
 from ta_research.data import fmp
 

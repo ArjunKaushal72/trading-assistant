@@ -8,7 +8,6 @@ from ta_research.data.calendars import valid_sessions
 def clean_nyse_frame() -> pd.DataFrame:
     """A small, internally-consistent, gap-free NYSE panel for one symbol."""
     sessions = valid_sessions("NYSE", "2023-01-03", "2023-01-31")
-    n = len(sessions)
     base = 100.0
     rows = []
     for i, d in enumerate(sessions):

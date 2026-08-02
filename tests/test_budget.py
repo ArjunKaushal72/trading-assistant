@@ -140,9 +140,12 @@ def test_daily_counter_does_not_govern_hourly_provider(con):
     already freed capacity."""
     from datetime import timedelta
     old = budget._now() - timedelta(hours=3)
+    # call_day is today (the daily counter keys on it); the timestamp is 3h ago so
+    # the rolling hour has already freed the capacity. Dating the rows by old.date()
+    # made this fail whenever it ran in the first 3h of the UTC day.
     for i in range(53):
         con.execute("INSERT INTO api_calls VALUES (?,?,?,?,?,?,?)",
-                    [old, old.date(), "tiingo", "daily", f"S{i}", True, "200"])
+                    [old, budget._now().date(), "tiingo", "daily", f"S{i}", True, "200"])
     assert budget.remaining_budget(con, "tiingo", 45) == 0      # old behaviour
     assert budget.remaining_in_window(con, "tiingo", 50, 60) == 50  # correct
 
